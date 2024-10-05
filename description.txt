@@ -1,0 +1,7 @@
+Mana Rework is a modification that makes certain items use some mana, similar to how they worked in Terraria 1.0.
+
+Actual description TBD.
+
+Possibly will rework mana as a resource, making mana potions more valuable & situational than just "ammunition" to mages.
+
+Oh, also, this mod makes mana stars five times more expensive, so they're actually difficult to get.

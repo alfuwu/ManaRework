@@ -1,0 +1,6 @@
+displayName = Mana Rework
+author = alfuwu
+version = 6.9
+hideCode = false
+hideResources = false
+includeSource = true
