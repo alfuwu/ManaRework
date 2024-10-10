@@ -28,7 +28,6 @@ public class ManaRework : Mod {
     }
 
     private static void OnSetConsumedManaCrystals(Action<Player, int> orig, Player player, int val) {
-        Main.NewText(ManaReworkConfig.Instance.ZeroBaseMana);
         if (ManaReworkConfig.Instance.UnlimitedManaCrystals)
             consumedManaCrystals.SetValue(player, val);
         else if (ManaReworkConfig.Instance.ZeroBaseMana)
