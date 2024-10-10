@@ -1,25 +1,25 @@
 Configs: {
 	ManaReworkConfig: {
-		DisplayName: Mana Rework Config
+		DisplayName: Config
 
 		UnlimitedManaCrystals: {
 			Label: Unlimited Mana Crystals
-			Tooltip: ""
+			Tooltip: Removes the limiter on mana crystals, allowing you to use as mana as you like
 		}
 
 		ZeroBaseMana: {
 			Label: Zero Base Mana
-			Tooltip: ""
+			Tooltip: Makes all characters start with 20 less mana
 		}
 
 		MoreExpensiveManaCrystals: {
 			Label: More Expensive Mana Crystals
-			Tooltip: ""
+			Tooltip: Increases the cost of any recipe that results in a mana crystal by 5x
 		}
 
 		MoreManaUsingItems: {
 			Label: More Mana Using Items
-			Tooltip: ""
+			Tooltip: Makes items (such as the magic mirror) use mana, similar to how they worked before Terraria 1.2
 		}
 	}
 }

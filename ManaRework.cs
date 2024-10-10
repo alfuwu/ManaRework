@@ -49,7 +49,8 @@ public class ManaRework : Mod {
             ILLabel zeroBaseMana = il.DefineLabel();
             c.Emit(OpCodes.Brfalse_S, zeroBaseMana);
             c.Emit(OpCodes.Pop);
-            c.Emit(OpCodes.Ldc_I4, int.MaxValue);
+            c.Emit(OpCodes.Ldc_I4, int.MaxValue / 21); // divided by 20 so that the player's mana value doesn't overflow
+            // divided by 21 so that modded mana additions don't cause the player's mana to overflow
             c.Emit(OpCodes.Br_S, vanilla);
             c.MarkLabel(zeroBaseMana);
             c.Emit(OpCodes.Call, typeof(ManaReworkConfig).GetMethod("get_Instance", BindingFlags.Public | BindingFlags.Static));
