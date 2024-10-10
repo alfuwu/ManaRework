@@ -91,14 +91,15 @@ public class ManaReworkPlayer : ModPlayer {
     public int ActuallyConsumedManaCrystals { get; set; }
 
     public override void ModifyMaxStats(out StatModifier health, out StatModifier mana) {
-        health = new();
+        health = StatModifier.Default;
         mana = new();
         if (ManaReworkConfig.Instance.ZeroBaseMana)
             mana.Base = -20;
     }
 
     public override void SaveData(TagCompound tag) {
-        tag["ConsumedManaCrystals"] = ActuallyConsumedManaCrystals;
+        if (ActuallyConsumedManaCrystals > Player.ManaCrystalMax)
+            tag["ConsumedManaCrystals"] = ActuallyConsumedManaCrystals;
     }
 
     public override void LoadData(TagCompound tag) {
