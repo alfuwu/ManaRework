@@ -1,3 +1,8 @@
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using MonoMod.RuntimeDetour;
+using System;
+using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -5,7 +10,44 @@ using Terraria.ModLoader;
 namespace ManaRework;
 
 public class ManaRework : Mod {
+    public Hook h;
+    private static readonly FieldInfo consumedManaCrystals = typeof(Player).GetField("consumedManaCrystals", BindingFlags.NonPublic | BindingFlags.Instance);
 
+    public override void Load() {
+        IL_Player.ItemCheck_UseManaCrystal += ItemCheck_UseManaCrystal;
+        h = new(typeof(Player).GetMethod("set_ConsumedManaCrystals", BindingFlags.Public | BindingFlags.Instance), OnSetConsumedManaCrystals);
+        h.Apply();
+    }
+
+    public override void Unload() {
+        IL_Player.ItemCheck_UseManaCrystal -= ItemCheck_UseManaCrystal;
+        h?.Undo();
+    }
+
+    private static void OnSetConsumedManaCrystals(Action<Player, int> orig, Player player, int val) {
+        consumedManaCrystals.SetValue(player, Math.Clamp(val, 0, Player.ManaCrystalMax + 1));
+    }
+
+    private void ItemCheck_UseManaCrystal(ILContext il) {
+        try {
+            ILCursor c = new(il);
+            c.GotoNext(MoveType.After, i => i.MatchLdcI4(Player.ManaCrystalMax));
+            c.Emit(OpCodes.Pop); // remove mana crystal max from the stack
+            c.Emit(OpCodes.Ldc_I4, Player.ManaCrystalMax + 1);
+        } catch (Exception e) {
+            MonoModHooks.DumpIL(this, il);
+            throw new ILPatchFailureException(this, il, e);
+        }
+    }
+}
+
+public class ManaReworkPlayer : ModPlayer {
+    public override void ModifyMaxStats(out StatModifier health, out StatModifier mana) {
+        health = new();
+        mana = new() {
+            Base = -20
+        };
+    }
 }
 
 public class ManaReworkSystem : ModSystem {
