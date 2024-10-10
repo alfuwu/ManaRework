@@ -1,1 +1,25 @@
+Configs: {
+	ManaReworkConfig: {
+		DisplayName: Mana Rework Config
 
+		UnlimitedManaCrystals: {
+			Label: Unlimited Mana Crystals
+			Tooltip: ""
+		}
+
+		ZeroBaseMana: {
+			Label: Zero Base Mana
+			Tooltip: ""
+		}
+
+		MoreExpensiveManaCrystals: {
+			Label: More Expensive Mana Crystals
+			Tooltip: ""
+		}
+
+		MoreManaUsingItems: {
+			Label: More Mana Using Items
+			Tooltip: ""
+		}
+	}
+}
