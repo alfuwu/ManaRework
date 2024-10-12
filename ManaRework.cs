@@ -13,8 +13,8 @@ using Terraria.ModLoader.IO;
 namespace ManaRework;
 
 public class ManaRework : Mod {
-    public Hook h;
     private static readonly FieldInfo consumedManaCrystals = typeof(Player).GetField("consumedManaCrystals", BindingFlags.NonPublic | BindingFlags.Instance);
+    public Hook h;
 
     public override void Load() {
         IL_Player.ItemCheck_UseManaCrystal += ItemCheck_UseManaCrystal;

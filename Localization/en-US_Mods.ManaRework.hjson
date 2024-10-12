@@ -8,18 +8,18 @@ Configs: {
 		}
 
 		ZeroBaseMana: {
-			Label: Zero Base Mana
+			Label: "[i:4143] Zero Base Mana"
 			Tooltip: Makes all characters start with 20 less mana
 		}
 
 		MoreExpensiveManaCrystals: {
-			Label: More Expensive Mana Crystals
+			Label: "[i:109] More Expensive Mana Crystals"
 			Tooltip: Increases the cost of any recipe that results in a mana crystal by 5x
 		}
 
 		MoreManaUsingItems: {
-			Label: More Mana Using Items
-			Tooltip: Makes items (such as the magic mirror) use mana, similar to how they worked before Terraria 1.2
+			Label: "[i:50] More Items Use Mana"
+			Tooltip: Makes items such as the magic mirror use mana, similar to how they worked before Terraria 1.2
 		}
 	}
 }
